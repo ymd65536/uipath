@@ -64,8 +64,8 @@ sVal = sVal.Replace("あ","か")
 ' あらかじめ文字列変数sValを宣言しておく
 ' sVal = "あいうえお"
 
-sVal.Replace("あ") ' True
-sVal.Replace("か") ' False
+sVal.contains("あ") ' True
+sVal.contains("か") ' False
 
 
 ```
