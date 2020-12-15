@@ -35,6 +35,29 @@ Split("1,2,3",",")(2) ' 3
 
 ```
 
+## left
+
+指定された分だけ左から文字列を取り出す関数
+
+``` VB
+
+test = "abcde"
+left(test,1) ' a
+
+```
+
+## instr
+
+文字列から特定の文字を探す関数
+見つかった場合は見つかった位置を返し見つからない場合は0を返す。
+
+```  VB
+
+test = "abcde"
+instr(test,"a") ' 1
+
+```
+
 
 ## Replace
 
@@ -109,6 +132,38 @@ tbl.Rows(1).item(2)' リーナス
 
 データの追加、削除をデータテーブルに対して行う場合はアクティビティを通して実行する必要がある。
 
+# ファイル・ディレクトリ操作
+
+## ディレクトリ配下のファイルを全て取得
+
+Microsoft Scripting Runtimeでいうところの  
+「FileSystemObject」で利用できる「GetFolder(args).GetFiles」に相当する。
+
+ディレクトリ配下のtxtを全て取得する場合は  
+Array of [String]で変数を宣言して代入アクティビティで代入すれば良い。
+
+``` CS
+fileList = System.IO.Directory.GetFiles(strFolder,”*.txt”)
+```
+
+上記のString型の配列、fileListからデータを取り出す際は
+For eachアクティビティを利用することで順に取り出すことが可能である。
+
+## OS上の特殊なディレクトリを取得
+
+Windowsにはあらかじめ用意された特殊なディレクトリが存在する。  
+UiPathで利用する場合は「Get Environment Folder」 を活用する。
+
+デスクトップのルートディレクトリを指定する場合はDesktopを指定する。
+
+## ファイル名から拡張子を除いた部分だけ取得
+
+``` VB
+
+filename = "test.csv"
+tmp = left(filename,instr(filename,".")-1)
+
+```
 
 # シナリオをより速く作るには
 
@@ -143,4 +198,69 @@ TypeIntoアクティビティを使わないと
 ブラウザの名前をつけて保存の場合は  
 ファイルのフルパスを与える作りでライブラリ化することで
 使いまわせるのでは
+
+
+# Microsoft Excel Visual Basic for Application の 小ネタ
+
+## セルの操作
+
+レンジ指定のセル貼り付けよりもセルオブジェクト操作による貼り付けのほうが早い。  
+値を代入するだけであればもちろん、直接代入するほうが早い。
+
+レンジ指定のセル貼り付け < セルオブジェクト操作による貼り付け < 直接代入
+
+ゆえにPasteSpecialメソッドを複数回に渡って実行するのであれば
+直接、値を代入してあげたほうが早い。
+
+## イベント
+
+Excelは常にイベント発生を監視している為
+その分、セルやワークシートを操作したときに遅延が生じる。  
+イベントの類を抑えたい場合は  
+Applicationオブジェクトの「EnableEvents」プロパティをfalseに設定する。
+
+
+## Range と Cells
+
+どちらでも基本、セルを操作することは可能だがスピードを求める場合は  
+Cellsのほうが若干ながら早い。  
+早い理由としてCellsは縦横のアドレスを指定しているのに対して
+Rangeは利用する度に座標変換が入る為、遅延が生じる。
+
+
+## コピーして挿入
+
+Insertメソッド利用前にCopyメソッドを実行すると  
+コピーして挿入することが可能
+
+## 1年間の営業日だけを取り出したい
+
+``` VB
+worksheetFunction.Workday(開始日,日数,祭日リスト)
+```
+開始日を明日の日付に設定して  
+結果をテキストにするとX行数=X営業日目になる。
+
+## よく使うWorksheet Function
+
+- MAX
+- ROW
+- INDEX
+- IFERROR
+- IF
+- COUNTIF
+- COUNTIFS
+
+## Is～
+
+- IsError
+value といったセル内の関数エラー時に利用できます。
+
+- IsEmpty
+
+- IsNothing
+
+※Is Nothing の方が少し動作が速いが無視できるレベル
+IsNothing関数は値型の変数に対しても使えるのに対し  
+Is Nothingは値型の変数に対して使用するとビルドエラーになります
 
