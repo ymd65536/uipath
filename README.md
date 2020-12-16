@@ -276,7 +276,8 @@ worksheetFunction.Workday(開始日,日数,祭日リスト)
 ## Is～
 
 - IsError
-value といったセル内の関数エラー時に利用できます。
+
+valueが起きているセルなどを検出できます。
 
 - IsEmpty
 
