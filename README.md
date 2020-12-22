@@ -32,6 +32,32 @@ UiPathで使える関数を調べる。
 - クリックシュミレートにチェックを入れる
 - 要素が検出できるまで待つ(ElementExistアクティビティ)の活用  
 
+# ブラウザの操作
+
+ブラウザを操作する場合は  
+ブラウザ専用のアクティビティを活用することで  
+オートメーションに対応できる。
+
+## ブラウザを開く
+
+指定のURLでブラウザを開く。  
+続くDoアクティビティにはURLを開いた後のアクティビティを追加する。  
+ex ) URLを開いたらログインIDパスワードを入力してログインをクリックする。
+
+## ブラウザにアタッチ
+既に開いているブラウザを利用するときに利用
+
+既にブラウザを開いている場合は  
+UiPath.Core.Browser型の変数を用いることで任意のブラウザを操作することが可能  
+ただし、UiPath.Core.Browser型の変数で操作対象のブラウザを格納するしていること  
+
+ex ) ブラウザを開くの出力でUiPath.Core.Browser型の変数 Browserを出力する。  
+Browserをブラウザにアタッチに入力してウィンドウを補足する。  
+
+
+## Do アクティビティにいれるモノ
+
+最大化、最小化とかそんなやつ  
 
 # フロー制御(条件分岐)
 
@@ -357,3 +383,7 @@ Is Nothingは値型の変数に対して使用するとビルドエラーにな�
 
 [UiPath入門編4　繰り返し処理について - Automation Lab](https://sweetpox.com/about-iterative-processing)  
 [UiPath ループ処理まとめ](http://rpa-navi.com/archives/431)
+
+## 誰でもできる業務改善講座
+
+[UiPath ブラウザーにアタッチ アクティビティ](https://blog-tips.sekenkodqx.jp/2020/10/06/uipath-activity-browser-scope/)
