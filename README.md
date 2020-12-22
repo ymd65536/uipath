@@ -323,11 +323,11 @@ valueが起きているセルなどを検出できます。
 
 - IsNothing
 
-※Is Nothing の方が少し動作が速いが無視できるレベル
+※Is Nothing の方が少し動作が速いが無視できるレベル  
 IsNothing関数は値型の変数に対しても使えるのに対し  
 Is Nothingは値型の変数に対して使用するとビルドエラーになります
 
-# 参考資料
+# 参考資料・URL
 
 ## 公式
 
@@ -339,5 +339,5 @@ Is Nothingは値型の変数に対して使用するとビルドエラーにな�
 
 ## RPA Navi
 
-[UiPath入門編4　繰り返し処理について - Automation Lab](https://sweetpox.com/about-iterative-processing)
+[UiPath入門編4　繰り返し処理について - Automation Lab](https://sweetpox.com/about-iterative-processing)  
 [UiPath ループ処理まとめ](http://rpa-navi.com/archives/431)
