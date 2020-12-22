@@ -327,3 +327,17 @@ valueが起きているセルなどを検出できます。
 IsNothing関数は値型の変数に対しても使えるのに対し  
 Is Nothingは値型の変数に対して使用するとビルドエラーになります
 
+# 参考資料
+
+## 公式
+
+[UiPath プロセス爆速化の為のTIPS](https://www.uipath.com/ja/blog/developer/accelerate-processing)
+
+## Qiita
+
+[UiPath　処理時間を計測する方法](https://qiita.com/masaru9624/items/951b1c8b4e89b6f8ee4b)
+
+## RPA Navi
+
+[UiPath入門編4　繰り返し処理について - Automation Lab](https://sweetpox.com/about-iterative-processing)
+[UiPath ループ処理まとめ](http://rpa-navi.com/archives/431)
